@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "cucumber_json.py"}]
 
 [tool.poetry.dependencies]
-behave = "1.2.6"
+behave = { git = "https://github.com/behave/behave", tag = "v1.2.7.dev2" }
 pytest = "^7.2.0"
 python = "^3.8"
 six = "^1.16.0"
