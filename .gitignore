@@ -1,8 +1,9 @@
 # Teamcity patches
-.settings/patches
+.teamcity/patches
 
 # JetBrains
 .idea
+.teamcity/**/*.iml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
