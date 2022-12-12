@@ -4,7 +4,7 @@ version = "0.0.0"
 description = "Formats behave json output into cucumber json."
 authors = ["softozor <softozor@gmail.com>"]
 readme = "README.md"
-packages = [{include = "cucumber_json.py"}]
+packages = [{include = "behave_to_cucumber_json_formatter"}]
 
 [tool.poetry.dependencies]
 behave = "1.2.6"
