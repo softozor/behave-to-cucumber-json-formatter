@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import absolute_import
-from behave.model_core import Status
 from behave.formatter.base import Formatter
 import base64
 import six
@@ -55,7 +54,7 @@ class CucumberJSONFormatter(Formatter):
             'keyword': feature.keyword,
             'name': feature.name,
             'tags': self.write_tags(feature.tags),
-            'status': feature.status.name,
+            'status': feature.status,
         }
         element = self.current_feature_data
         if feature.description:
@@ -137,10 +136,10 @@ class CucumberJSONFormatter(Formatter):
 
     def result(self, result):
         self.current_step['result'] = {
-            'status': result.status.name,
+            'status': result.status,
             'duration': int(round(result.duration * 1000.0 * 1000.0 * 1000.0)),
         }
-        if result.error_message and result.status == Status.failed:
+        if result.error_message and result.status == 'failed':
             # -- OPTIONAL: Provided for failed steps.
             error_message = result.error_message
             result_element = self.current_step['result']
@@ -208,7 +207,7 @@ class CucumberJSONFormatter(Formatter):
     def update_status_data(self):
         assert self.current_feature
         assert self.current_feature_data
-        self.current_feature_data['status'] = self.current_feature.status.name
+        self.current_feature_data['status'] = self.current_feature.status
 
     def write_tags(self, tags):
         return [{'name': tag, 'line': tag.line if hasattr(tag, 'line') else 1} for tag in tags]
